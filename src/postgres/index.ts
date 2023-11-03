@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import test from './models/test';
+import cities from './models/cities';
 
 const sequelize = new Sequelize(
   'numeral-test',
@@ -13,19 +13,10 @@ const sequelize = new Sequelize(
   },
 );
 
-test(sequelize);
-
-const testModel = sequelize.models.test;
-
-/*
-sequelize.models.test.hasMany(sequelize.models.__);
-sequelize.models.__.belongsTo(sequelize.models.test, { foreignKey: '' });
-*/
-
-// https://github.com/vercel/next.js/discussions/15341
-// if (process.env.NEXT_PHASE !== 'phase-production-build') sequelize.sync();
+cities(sequelize);
+const citiesModel = sequelize.models.city;
 
 export {
   sequelize as postgres,
-  testModel,
+  citiesModel,
 };
